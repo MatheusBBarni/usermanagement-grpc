@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package usermgmt;
+
+option go_package = "github.com/MatheusBBarni/usermgmt-grpc;usermgmt_grpc";
+
+service UserManagement {
+  rpc CreateNewUser (NewUser) returns (User) {}
+  rpc GetUsers (GetUsersParams) returns (UserList) {}
+}
+
+message NewUser {
+  string name = 1;
+  int32 age = 2;
+}
+
+message User {
+  string name = 1;
+  int32 age = 2;
+  int32 id = 3;
+}
+
+message GetUsersParams {}
+
+message UserList {
+  repeated User Users = 1;
+}
